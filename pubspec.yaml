@@ -29,6 +29,10 @@ dependencies:
   font_awesome_flutter: ^8.5.0
   lottie: ^0.2.1
   image_picker: any
+  media_gallery: any
+  video_player: any
+  path_provider: any
+  #simple_permissions: ^0.1.9
 
 dev_dependencies:
   flutter_test:

@@ -6,6 +6,9 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:media_gallery/media_gallery.dart';
+import 'package:video_player/video_player.dart';
 
 class MessageForm extends StatefulWidget {
   final Function(String, String) onSendMessage;
@@ -103,7 +106,7 @@ class _MessageFormState extends State<MessageForm> {
             ),
             Container(
               child: IconButton(
-                onPressed: openCameraGalleryBottomSheet,
+                onPressed: openVideoGallery,
                 icon: Icon(FontAwesomeIcons.camera),
                 color: Theme.of(context).primaryColor,
                 iconSize: 35,
@@ -113,6 +116,26 @@ class _MessageFormState extends State<MessageForm> {
         ),
       ),
     );
+  }
+
+  File _image;
+  final picker = ImagePicker();
+  void openVideoGallery() async {
+    PickedFile pickedFile = await picker.getVideo(
+      source: ImageSource.gallery,
+    );
+
+    File videofile = File(pickedFile.path);
+    String base64Image = base64Encode(videofile.readAsBytesSync());
+
+    //    List<int> imageBytes = img_profile.readAsBytesSync();
+    // String base64Image = base64Encode(imageBytes);
+    print("=base64Image1====${base64Image}==");
+    widget.onSendMessage(base64Image, "video");
+    print("videofile${videofile}");
+    setState(() {
+      _image = videofile;
+    });
   }
 
   void openCameraGalleryBottomSheet() async {
@@ -209,10 +232,10 @@ class _MessageFormState extends State<MessageForm> {
           img_profile = File(picture.path);
         });
         // _readFileByte(picture.path);
-        print("============${picture.path}===");
+        // print("============${picture.path}===");
         String base64Image = base64Encode(img_profile.readAsBytesSync());
 
-        List<int> imageBytes = img_profile.readAsBytesSync();
+        //    List<int> imageBytes = img_profile.readAsBytesSync();
         // String base64Image = base64Encode(imageBytes);
         print("=base64Image1====${base64Image}==");
         widget.onSendMessage(base64Image, "image");

@@ -2,3 +2,10 @@
 flutter_plugin_android_lifecycle=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-1.0.11/
 flutter_socket_io=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_socket_io-0.6.0/
 image_picker=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+22/
+media_gallery=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/media_gallery-0.1.5/
+path_provider=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.27/
+path_provider_linux=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/
+path_provider_macos=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+8/
+path_provider_windows=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-0.0.4+3/
+video_player=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/video_player-1.0.1/
+video_player_web=/home/harsh/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/video_player_web-0.1.4+1/
