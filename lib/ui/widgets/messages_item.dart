@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
@@ -12,6 +14,11 @@ class MessagesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var bytes = [];
+    if (_message.msg_type != "text") {
+      bytes = base64.decode(_message.content);
+    }
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -101,15 +108,23 @@ class MessagesItem extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(
-                                _message.content,
-                                style:
-                                    Theme.of(context).textTheme.title.copyWith(
-                                          color: Colors.white,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                              ),
+                              _message.msg_type == "text"
+                                  ? Text(
+                                      _message.content,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .title
+                                          .copyWith(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    )
+                                  : Image.memory(
+                                      bytes,
+                                      height: 300,
+                                      width: 300,
+                                    ),
                               const SizedBox(
                                 height: 10,
                               ),

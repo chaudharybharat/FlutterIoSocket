@@ -38,18 +38,15 @@ class _ChatScreenState extends State<ChatScreen> {
         'stop_typing', json.encode({'senderName': widget.senderName}));
   }
 
-  void _sendMessage(String messageContent) {
+  void _sendMessage(String messageContent, String msg_type) {
     _socketIoManager.sendMessage(
       'send_message',
-      Message(
-        widget.senderName,
-        messageContent,
-        DateTime.now(),
-      ).toJson(),
+      Message(widget.senderName, messageContent, DateTime.now(), msg_type)
+          .toJson(),
     );
 
-    Provider.of<MessagesProvider>(context, listen: false)
-        .addMessage(Message(widget.senderName, messageContent, DateTime.now()));
+    Provider.of<MessagesProvider>(context, listen: false).addMessage(
+        Message(widget.senderName, messageContent, DateTime.now(), msg_type));
   }
 
   @override

@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MessageForm extends StatefulWidget {
-  final Function(String) onSendMessage;
+  final Function(String, String) onSendMessage;
 
   final Function onTyping;
 
@@ -30,7 +34,7 @@ class _MessageFormState extends State<MessageForm> {
   void _sendMessage() {
     if (_textEditingController.text.isEmpty) return;
 
-    widget.onSendMessage(_textEditingController.text);
+    widget.onSendMessage(_textEditingController.text, "text");
     setState(() {
       _textEditingController.text = "";
     });
@@ -97,9 +101,126 @@ class _MessageFormState extends State<MessageForm> {
                 iconSize: 35,
               ),
             ),
+            Container(
+              child: IconButton(
+                onPressed: openCameraGalleryBottomSheet,
+                icon: Icon(FontAwesomeIcons.camera),
+                color: Theme.of(context).primaryColor,
+                iconSize: 35,
+              ),
+            )
           ],
         ),
       ),
     );
+  }
+
+  void openCameraGalleryBottomSheet() async {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext bc) {
+          return Container(
+              // margin: EdgeInsets.only(left: 10, right: 10),
+              height: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                color: Colors.white,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      pickImageFromGallery(ImageSource.camera);
+                      //  _getImage();
+                      Navigator.pop(context);
+                    }, // handle your image tap here
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(3.0),
+                          child: Icon(
+                            Icons.camera_alt,
+                            color: Colors.grey,
+                            size: 100,
+                          ),
+                        ),
+                        Text(
+                          'camera',
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        )
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      pickImageFromGallery(ImageSource.gallery);
+                      Navigator.pop(context);
+                    }, // handle your image tap here
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(3.0),
+                          child:
+                              Icon(Icons.image, color: Colors.grey, size: 100),
+                        ),
+                        Text(
+                          'gallery',
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ));
+        });
+  }
+
+  Future<Uint8List> _readFileByte(String filePath) async {
+    Uri myUri = Uri.parse(filePath);
+    File audioFile = new File.fromUri(myUri);
+    Uint8List bytes;
+    await audioFile.readAsBytes().then((value) {
+      bytes = Uint8List.fromList(value);
+      String base64Image = base64Encode(bytes);
+      // widget.onSendMessage(base64Image);
+      print("=====base64Image new===${base64Image}======");
+      print('reading of bytes is completed');
+    }).catchError((onError) {
+      print('Exception Error while reading audio from path:' +
+          onError.toString());
+    });
+    return bytes;
+  }
+
+  File img_profile;
+  pickImageFromGallery(ImageSource source) async {
+    try {
+      var imageFile =
+          await ImagePicker.pickImage(source: source).then((picture) {
+        setState(() {
+          img_profile = File(picture.path);
+        });
+        // _readFileByte(picture.path);
+        print("============${picture.path}===");
+        String base64Image = base64Encode(img_profile.readAsBytesSync());
+
+        List<int> imageBytes = img_profile.readAsBytesSync();
+        // String base64Image = base64Encode(imageBytes);
+        print("=base64Image1====${base64Image}==");
+        widget.onSendMessage(base64Image, "image");
+
+        //  getFileSelect(picture); // I found this .then necessary
+      });
+    } catch (error) {
+      print('error taking picture ${error} ');
+    }
   }
 }

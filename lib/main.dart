@@ -6,6 +6,7 @@ import './ui/screens/join.dart';
 
 void main() => runApp(MyApp());
 
+//https://github.com/sreejesh79/android-socket.io-demo/blob/master/app/src/main/java/com/kriyatma/nodesocket/ChatFragment.java
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Socket IO Chat',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.teal,
-          accentColor: Colors.pink.withOpacity(.8),
+          primarySwatch: Colors.blue,
+          accentColor: Colors.blue.withOpacity(.8),
           textTheme: TextTheme(
             title: TextStyle(color: Colors.white),
           ),
