@@ -14,7 +14,7 @@ class MessagesItem extends StatelessWidget {
 
   final bool isUserMassage;
 
-  const MessagesItem(this._message, this.isUserMassage);
+  MessagesItem(this._message, this.isUserMassage);
 
   Future<File> writeToFile(Uint8List data) async {
     File recordedFile = File("/storage/emulated/0/recordedFile.mp4");
@@ -25,14 +25,6 @@ class MessagesItem extends StatelessWidget {
       print("=======null=====");
     }
   }
-/*
-  requestWritePermission() async {
-    PermissionStatus permissionStatus =
-        await SimplePermissions.requestPermission(
-            Permission.WriteExternalStorage);
-    print(permissionStatus);
-    if (permissionStatus == PermissionStatus.authorized) {}
-  }*/
 
   getImage(Uint8List tempImg) async {
     if (tempImg != null) {
@@ -59,13 +51,18 @@ class MessagesItem extends StatelessWidget {
         .writeAsBytes(data, mode: FileMode.writeOnly, flush: true);
   }
 
+  VideoPlayerController _controller;
   @override
   Widget build(BuildContext context) {
-    // requestWritePermission();
-    VideoPlayerController _controller;
     _controller = VideoPlayerController.network(
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
-    _controller.play();
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4');
+    // requestWritePermission();
+    /* _controller = VideoPlayerController.network(
+        'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4')
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+      });
+    _controller.play();*/
     var bytes = [];
     if (_message.msg_type == "image") {
       bytes = base64.decode(_message.content);
@@ -73,8 +70,8 @@ class MessagesItem extends StatelessWidget {
       bytes = base64.decode(_message.content);
       //getImage(bytes);
       print("=======video==========");
-      writeToFileNew(bytes).then(
-          (value) => {print("=======video===downlaod done====${value}===")});
+      writeToFileNew(bytes).then((value) => {videoCompleteDonwload(value)});
+
       /*   final PermissionHandler _permissionHandler = PermissionHandler();
       var result = await _permissionHandler.requestPermissions([PermissionGroup.storage]);
       if (result[PermissionGroup.storage] == PermissionStatus.granted) {*/
@@ -143,85 +140,99 @@ class MessagesItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * .75,
-                    child: Align(
-                      alignment: isUserMassage
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: Card(
-                        elevation: 10,
-                        clipBehavior: Clip.antiAlias,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(isUserMassage ? 20 : 0),
-                            bottomRight:
-                                Radius.circular(isUserMassage ? 0 : 20),
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                        ),
-                        child: Container(
-                          color: isUserMassage
-                              ? Theme.of(context).primaryColor.withOpacity(.8)
-                              : Theme.of(context).accentColor,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          child: _message.msg_type == "video"
-                              ? AspectRatio(
-                                  aspectRatio: _controller.value.aspectRatio,
-                                  child: Stack(
-                                    alignment: Alignment.bottomCenter,
-                                    children: <Widget>[
-                                      VideoPlayer(_controller),
-                                    ],
-                                  ),
-                                )
-                              : Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    _message.msg_type == "text"
-                                        ? Text(
-                                            _message.content,
+                  _message.msg_type == "video"
+                      ? Container(
+                          height: 300,
+                          width: 200,
+                          child: VideoPlayer(_controller),
+                        )
+
+                      //  : Container()
+                      : Container(
+                          width: MediaQuery.of(context).size.width * .75,
+                          child: Align(
+                            alignment: isUserMassage
+                                ? Alignment.centerRight
+                                : Alignment.centerLeft,
+                            child: Card(
+                              elevation: 10,
+                              clipBehavior: Clip.antiAlias,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft:
+                                      Radius.circular(isUserMassage ? 20 : 0),
+                                  bottomRight:
+                                      Radius.circular(isUserMassage ? 0 : 20),
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20),
+                                ),
+                              ),
+                              child: Container(
+                                color: _message.msg_type == "video"
+                                    ? Colors.transparent
+                                    : isUserMassage
+                                        ? Theme.of(context)
+                                            .primaryColor
+                                            .withOpacity(.8)
+                                        : Theme.of(context).accentColor,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 15),
+                                child: _message.msg_type == "video"
+                                    ? _controller.value.initialized
+                                        ? SizedBox(
+                                            height: 300,
+                                            width: 200,
+                                            child: VideoPlayer(_controller),
+                                          )
+                                        : Container()
+                                    : Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          _message.msg_type == "text"
+                                              ? Text(
+                                                  _message.content,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .title
+                                                      .copyWith(
+                                                        color: Colors.white,
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                )
+                                              : _message.msg_type == "image"
+                                                  ? Image.memory(
+                                                      bytes,
+                                                      height: 300,
+                                                      width: 300,
+                                                    )
+                                                  : Text("msg type not found"),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                            DateFormat('HH:mm')
+                                                .format(_message.date)
+                                                .toString(),
+                                            textAlign: TextAlign.start,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .title
+                                                .subtitle
                                                 .copyWith(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white
+                                                      .withOpacity(.9),
                                                 ),
                                           )
-                                        : _message.msg_type == "image"
-                                            ? Image.memory(
-                                                bytes,
-                                                height: 300,
-                                                width: 300,
-                                              )
-                                            : Text("msg type not found"),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      DateFormat('HH:mm')
-                                          .format(_message.date)
-                                          .toString(),
-                                      textAlign: TextAlign.start,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .subtitle
-                                          .copyWith(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white.withOpacity(.9),
-                                          ),
-                                    )
-                                  ],
-                                ),
+                                        ],
+                                      ),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ],
@@ -232,5 +243,17 @@ class MessagesItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  videoCompleteDonwload(File value) {
+    print("complet donlwod ===");
+/*    _controller.dispose();
+    _controller = VideoPlayerController.network(
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4')*/
+    _controller
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+      });
+    _controller.play();
   }
 }
