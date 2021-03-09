@@ -11,4 +11,9 @@ class MessagesProvider with ChangeNotifier {
     _messages.insert(0, message);
     notifyListeners();
   }
+
+  void updateMessage(int pos, Message message) {
+    _messages[pos] = message;
+    notifyListeners();
+  }
 }
