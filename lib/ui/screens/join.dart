@@ -8,14 +8,16 @@ class JoinScreen extends StatefulWidget {
 }
 
 class _JoinScreenState extends State<JoinScreen> {
-  TextEditingController _textEditingController;
+  TextEditingController _textUserNameEditingController;
+  TextEditingController _textRoomEditingController;
 
   void _joinChat() {
-    if (_textEditingController.text.isEmpty) return;
+    if (_textUserNameEditingController.text.isEmpty) return;
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => ChatScreen(_textEditingController.text),
+        builder: (ctx) => ChatScreen(_textUserNameEditingController.text,
+            _textRoomEditingController.text),
       ),
     );
   }
@@ -23,60 +25,73 @@ class _JoinScreenState extends State<JoinScreen> {
   @override
   void initState() {
     super.initState();
-    _textEditingController = TextEditingController();
+    _textUserNameEditingController = TextEditingController();
+    _textRoomEditingController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _textEditingController.dispose();
+    _textUserNameEditingController.dispose();
+    _textRoomEditingController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Socket IO Chat'),
-      ),
-      body: Center(
-        child: Container(
-          height: 200,
-          child: Card(
-            elevation: 10,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            margin: const EdgeInsets.all(20),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(
-                      labelText: "What's your nickname?",
-                    ),
-                    onSubmitted: (_) {
-                      _joinChat();
-                    },
+        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: true,
+        appBar: AppBar(
+          title: Text('Flutter Socket IO Chat'),
+        ),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                margin: const EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextField(
+                        controller: _textUserNameEditingController,
+                        decoration: InputDecoration(
+                          labelText: "What's your nickname?",
+                        ),
+                        onSubmitted: (_) {
+                          _joinChat();
+                        },
+                      ),
+                      TextField(
+                        controller: _textRoomEditingController,
+                        decoration: InputDecoration(
+                          labelText: "Enter room id",
+                        ),
+                        onSubmitted: (_) {
+                          _joinChat();
+                        },
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      MaterialButton(
+                        minWidth: double.infinity,
+                        onPressed: _joinChat,
+                        color: Theme.of(context).primaryColor,
+                        textColor: Theme.of(context).textTheme.title.color,
+                        child: Text('JOIN'),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  MaterialButton(
-                    minWidth: double.infinity,
-                    onPressed: _joinChat,
-                    color: Theme.of(context).primaryColor,
-                    textColor: Theme.of(context).textTheme.title.color,
-                    child: Text('JOIN'),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

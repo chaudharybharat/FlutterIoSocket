@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/harsh/Documents/GitProject/FlutterIoSocket/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/home/harsh/Documents/project/fullter/fluttersocketiochat/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
-                    "source": "/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/res/values/styles.xml",
+                    "source": "/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

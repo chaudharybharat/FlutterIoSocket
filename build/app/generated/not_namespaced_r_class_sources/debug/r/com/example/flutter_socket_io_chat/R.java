@@ -867,5 +867,6 @@ public final class R {
   }
   public static final class xml {
     public static final int flutter_image_picker_file_paths=0x7f0c0000;
+    public static final int network_security_config=0x7f0c0001;
   }
 }

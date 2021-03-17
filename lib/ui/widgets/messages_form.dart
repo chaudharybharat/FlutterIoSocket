@@ -106,6 +106,7 @@ class _MessageFormState extends State<MessageForm> {
             ),
             Container(
               child: IconButton(
+                //onPressed: openCameraGalleryBottomSheet,
                 onPressed: openVideoGallery,
                 icon: Icon(FontAwesomeIcons.camera),
                 color: Theme.of(context).primaryColor,
@@ -131,7 +132,9 @@ class _MessageFormState extends State<MessageForm> {
     //    List<int> imageBytes = img_profile.readAsBytesSync();
     // String base64Image = base64Encode(imageBytes);
     print("=base64Image1====${base64Image}==");
+
     widget.onSendMessage(base64Image, "video");
+    print("send video file=");
     print("videofile${videofile}");
     setState(() {
       _image = videofile;
@@ -239,7 +242,7 @@ class _MessageFormState extends State<MessageForm> {
         // String base64Image = base64Encode(imageBytes);
         print("=base64Image1====${base64Image}==");
         widget.onSendMessage(base64Image, "image");
-
+        print("send image file");
         //  getFileSelect(picture); // I found this .then necessary
       });
     } catch (error) {

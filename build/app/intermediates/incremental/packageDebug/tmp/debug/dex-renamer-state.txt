@@ -1,4 +1,4 @@
-#Tue Mar 09 15:35:22 IST 2021
-base.0=/home/harsh/Documents/GitProject/FlutterIoSocket/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Wed Mar 17 18:13:40 IST 2021
+base.0=/home/harsh/Documents/project/fullter/fluttersocketiochat/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

@@ -12,8 +12,8 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/debug/AndroidManifest.xml:6:22-64
+14-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/debug/AndroidManifest.xml:6:22-64
 15    <!--
 16     io.flutter.app.FlutterApplication is an android.app.Application that
 17         calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -22,79 +22,85 @@
 20         FlutterApplication and put your custom class here.
 21    -->
 22    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-22-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:8:5-80
-22-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:8:22-78
+22-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:8:5-80
+22-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:8:22-78
 23    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-23-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:9:5-79
-23-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:9:22-77
+23-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:9:5-79
+23-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:9:22-77
 24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 24-->[com.google.android.exoplayer:exoplayer-core:2.12.1] /home/harsh/.gradle/caches/transforms-2/files-2.1/e9edb8b7cd2d3009ebe489cb2d0fc142/exoplayer-core-2.12.1/AndroidManifest.xml:24:5-79
 24-->[com.google.android.exoplayer:exoplayer-core:2.12.1] /home/harsh/.gradle/caches/transforms-2/files-2.1/e9edb8b7cd2d3009ebe489cb2d0fc142/exoplayer-core-2.12.1/AndroidManifest.xml:24:22-76
 25
 26    <application
-26-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:10:5-31:19
+26-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:10:5-34:19
 27        android:name="io.flutter.app.FlutterApplication"
-27-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:11:9-57
+27-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:11:9-57
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 28-->[androidx.core:core:1.1.0] /home/harsh/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
 29        android:debuggable="true"
 30        android:icon="@mipmap/ic_launcher"
-30-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:13:9-43
-31        android:label="flutter_socket_io_chat" >
-31-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:12:9-47
-32        <activity
-32-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:14:9-25:20
-33            android:name="com.example.flutter_socket_io_chat.MainActivity"
-33-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:15:13-41
-34            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-34-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:18:13-163
-35            android:hardwareAccelerated="true"
-35-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:19:13-47
-36            android:launchMode="singleTop"
-36-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:16:13-43
-37            android:theme="@style/LaunchTheme"
-37-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:17:13-47
-38            android:windowSoftInputMode="adjustResize" >
-38-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:20:13-55
-39            <intent-filter>
-39-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:21:13-24:29
-40                <action android:name="android.intent.action.MAIN" />
-40-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:22:17-68
-40-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:22:25-66
-41
-42                <category android:name="android.intent.category.LAUNCHER" />
-42-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:23:17-76
-42-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:23:27-74
-43            </intent-filter>
-44        </activity>
-45        <!--
-46             Don't delete the meta-data below.
-47             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-48        -->
-49        <meta-data
-49-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:28:9-30:33
-50            android:name="flutterEmbedding"
-50-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:29:13-44
-51            android:value="2" />
-51-->/home/harsh/Documents/GitProject/FlutterIoSocket/android/app/src/main/AndroidManifest.xml:30:13-30
-52
-53        <provider
-53-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
-54            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-54-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
-55            android:authorities="com.example.flutter_socket_io_chat.flutter.image_provider"
-55-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
-56            android:exported="false"
-56-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
-57            android:grantUriPermissions="true" >
-57-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
-58            <meta-data
-58-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
-59                android:name="android.support.FILE_PROVIDER_PATHS"
-59-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
-60                android:resource="@xml/flutter_image_picker_file_paths" />
-60-->[:image_picker] /home/harsh/Documents/GitProject/FlutterIoSocket/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
-61        </provider>
-62    </application>
-63
-64</manifest>
+30-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:16:9-43
+31        android:label="flutter_socket_io_chat"
+31-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:12:9-47
+32        android:largeHeap="true"
+32-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:13:9-33
+33        android:networkSecurityConfig="@xml/network_security_config"
+33-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:14:9-69
+34        android:usesCleartextTraffic="true" >
+34-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:15:9-44
+35        <activity
+35-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:17:9-28:20
+36            android:name="com.example.flutter_socket_io_chat.MainActivity"
+36-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:18:13-41
+37            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+37-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:21:13-163
+38            android:hardwareAccelerated="true"
+38-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:22:13-47
+39            android:launchMode="singleTop"
+39-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:19:13-43
+40            android:theme="@style/LaunchTheme"
+40-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:20:13-47
+41            android:windowSoftInputMode="adjustResize" >
+41-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:23:13-55
+42            <intent-filter>
+42-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:24:13-27:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:25:17-68
+43-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:25:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:26:17-76
+45-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:26:27-74
+46            </intent-filter>
+47        </activity>
+48        <!--
+49             Don't delete the meta-data below.
+50             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+51        -->
+52        <meta-data
+52-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:31:9-33:33
+53            android:name="flutterEmbedding"
+53-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:32:13-44
+54            android:value="2" />
+54-->/home/harsh/Documents/project/fullter/fluttersocketiochat/android/app/src/main/AndroidManifest.xml:33:13-30
+55
+56        <provider
+56-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-19:20
+57            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+57-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-82
+58            android:authorities="com.example.flutter_socket_io_chat.flutter.image_provider"
+58-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-74
+59            android:exported="false"
+59-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-37
+60            android:grantUriPermissions="true" >
+60-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-47
+61            <meta-data
+61-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-18:75
+62                android:name="android.support.FILE_PROVIDER_PATHS"
+62-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:17:17-67
+63                android:resource="@xml/flutter_image_picker_file_paths" />
+63-->[:image_picker] /home/harsh/Documents/project/fullter/fluttersocketiochat/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-72
+64        </provider>
+65    </application>
+66
+67</manifest>
